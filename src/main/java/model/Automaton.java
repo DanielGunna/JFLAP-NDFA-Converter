@@ -1,30 +1,54 @@
 package model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Automaton {
 
+    @SerializedName("state")
     private List<State> states;
-    private List<Transition> transictions;
+    @SerializedName("transition")
+    private List<Transition> transitions;
 
+    private List<State> initialStates;
+    private List<State> finalStates;
 
-	public void addTransition(Transition t) {
+    public List<State> getStates() {
+        return states;
+    }
 
-	}
+    public void setStates(List<State> states) {
+        this.states = states;
+    }
 
-	public void setInitialState(State state) {
+    public List<Transition> getTransitions() {
+        return transitions;
+    }
 
-	}
+    public void setTransitions(List<Transition> transitions) {
+        this.transitions = transitions;
+    }
 
-	public void addFinalState(State state) {
+    public void addTransition(Transition t) {
 
-	}
+    }
 
-	public State createState(Point point) {
-		return null;
-	}
+    public void addInitialState(State state) {
+        if (initialStates == null) initialStates = new ArrayList<>();
+        initialStates.add(state);
+    }
+
+    public void addFinalState(State state) {
+        if (finalStates == null) finalStates = new ArrayList<>();
+        finalStates.add(state);
+    }
+
+    public State createState(Point point) {
+        return null;
+    }
 }
