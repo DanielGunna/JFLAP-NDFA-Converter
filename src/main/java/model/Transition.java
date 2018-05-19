@@ -1,6 +1,6 @@
 package model;
 
- 
+
 import com.google.gson.annotations.SerializedName;
 import controller.Constants;
 
