@@ -1,7 +1,8 @@
 package model;
 
-import com.google.gson.annotations.Expose;
+ 
 import com.google.gson.annotations.SerializedName;
+import controller.Constants;
 
 public class Transition {
     @SerializedName("read")
@@ -39,5 +40,9 @@ public class Transition {
 
     public void setToId(int toId) {
         this.toId = toId;
+    }
+
+    public boolean isLambdaTransition() {
+        return value.equals(Constants.LAMBDA);
     }
 }

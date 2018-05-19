@@ -2,16 +2,18 @@ package controller;
 
 
 import com.google.gson.Gson;
-import model.Automaton;
-import model.AutomatonStructure;
+import model.*;
 
-import model.AutomatonWrapper;
-import model.State;
 import org.json.JSONObject;
 import org.json.XML;
 
 import java.io.*;
 
+/**
+ * @author Daniel Gunna
+ * Class to handle parsing between  JFLAP file format (.jff) and project's models
+ * {@link AutomatonStructure} and {@link AutomatonWrapper}
+ */
 
 public class AutomatonReader {
 
@@ -44,6 +46,20 @@ public class AutomatonReader {
      * @return {@link AutomatonStructure} object with extra infos filled
      */
     private AutomatonStructure fillAutomaton(AutomatonWrapper automatonWrapper) {
+        return fillAutomatonType(
+                fillInitialsAndFinalStates(
+                        automatonWrapper
+                )
+        ).getAutomatonStructure();
+    }
+
+    /**
+     * Function to assign final and initial states
+     *
+     * @param automatonWrapper Automaton data wrapped by an {@link AutomatonWrapper} object
+     * @return {@link AutomatonWrapper} object filled with automaton initial and final states
+     */
+    private AutomatonWrapper fillInitialsAndFinalStates(AutomatonWrapper automatonWrapper) {
         Automaton automaton = automatonWrapper.getAutomatonStructure().getAutomaton();
         for (State s : automaton.getStates()) {
             if (s.isFinalState())
@@ -51,19 +67,40 @@ public class AutomatonReader {
             if (s.isInitialState())
                 automaton.addInitialState(s);
         }
-        return automatonWrapper.getAutomatonStructure();
+        return automatonWrapper;
+    }
+
+    /**
+     * Function to determinate automaton type.
+     * Possibles values are {@link Constants.DFA}(Deterministic Finite Automaton) and {@link Constants.NDFA}
+     * (Non-Deterministic Finite Automaton)
+     *
+     * @param automatonWrapper Automaton data wrapped by an {@link AutomatonWrapper} object
+     * @return {@link AutomatonWrapper} object filled with automaton type
+     */
+    private AutomatonWrapper fillAutomatonType(AutomatonWrapper automatonWrapper) {
+        Automaton automaton = automatonWrapper.getAutomatonStructure().getAutomaton();
+        //Assume that it's an DFA
+        automaton.setType(Constants.DFA);
+        for (Transition transition : automaton.getTransitions()) {
+            if (transition.isLambdaTransition()) {
+                automaton.setType(Constants.NDFA);
+                break;
+            }
+        }
+        return automatonWrapper;
     }
 
 
     /**
-     * Function to convert a xml content from automaton file into {@link AutomatonWrapper} object
+     * Function to convert a xml content from JLAP automaton format file into {@link AutomatonWrapper} object
      *
      * @param xmlFile
-     * @return Returns an {@link AutomatonWrapper} object containing data from xml content
+     * @return Returns an {@link AutomatonWrapper} that wraps an object  containing automaton data from xml content
      * @throws Exception
      */
     private AutomatonWrapper convertXmlToObject(String xmlFile) throws Exception {
-        JSONObject jsonObject = null;
+        JSONObject jsonObject;
         AutomatonWrapper automaton = null;
         try {
             jsonObject = XML.toJSONObject(xmlFile);

@@ -15,6 +15,7 @@ public class Automaton {
     @SerializedName("transition")
     private List<Transition> transitions;
 
+    private String type;
     private List<State> initialStates;
     private List<State> finalStates;
 
@@ -36,6 +37,30 @@ public class Automaton {
 
     public void addTransition(Transition t) {
 
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public List<State> getInitialStates() {
+        return initialStates;
+    }
+
+    public void setInitialStates(List<State> initialStates) {
+        this.initialStates = initialStates;
+    }
+
+    public List<State> getFinalStates() {
+        return finalStates;
+    }
+
+    public void setFinalStates(List<State> finalStates) {
+        this.finalStates = finalStates;
     }
 
     public void addInitialState(State state) {

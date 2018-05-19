@@ -1,7 +1,7 @@
 package controller;
 
 import model.AutomatonStructure;
-import model.AutomatonWrapper;
+
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
