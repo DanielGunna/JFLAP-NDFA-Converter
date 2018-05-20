@@ -40,6 +40,20 @@ public class AutomatonReader {
     }
 
     /**
+     * Function to determinate automaton's alphabet
+     *
+     * @param automatonWrapper Automaton data wrapped by an {@link AutomatonWrapper} object
+     * @return {@link AutomatonWrapper} object filled with automaton's alphabet
+     */
+    private AutomatonWrapper fillAlphabet(AutomatonWrapper automatonWrapper) {
+        Automaton automaton = automatonWrapper.getAutomatonStructure().getAutomaton();
+        for (Transition transition : automaton.getTransitions())
+            automaton.addAlphabetSymbol(transition.getValue());
+
+        return automatonWrapper;
+    }
+
+    /**
      * Function to fill some extra info about automaton and return on an {@link AutomatonStructure} object
      *
      * @param automatonWrapper An {@link AutomatonWrapper} object containing data about an automaton
@@ -48,7 +62,7 @@ public class AutomatonReader {
     private AutomatonStructure fillAutomaton(AutomatonWrapper automatonWrapper) {
         return fillAutomatonType(
                 fillInitialsAndFinalStates(
-                        automatonWrapper
+                        fillAlphabet(automatonWrapper)
                 )
         ).getAutomatonStructure();
     }

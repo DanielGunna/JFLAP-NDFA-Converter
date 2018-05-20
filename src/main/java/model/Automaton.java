@@ -3,43 +3,48 @@ package model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.awt.*;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Automaton {
 
     @SerializedName("state")
-    private List<State> states;
+    private Set<State> states;
     @SerializedName("transition")
-    private List<Transition> transitions;
+    private Set<Transition> transitions;
 
     private String type;
-    private List<State> initialStates;
-    private List<State> finalStates;
+    private Set<String> alphabet;
+    private Set<State> initialStates;
+    private Set<State> finalStates;
 
-    public List<State> getStates() {
+    public Set<State> getStates() {
         return states;
     }
 
-    public void setStates(List<State> states) {
+    public void setStates(Set<State> states) {
         this.states = states;
     }
 
-    public List<Transition> getTransitions() {
+    public Set<Transition> getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(List<Transition> transitions) {
+    public void setTransitions(Set<Transition> transitions) {
         this.transitions = transitions;
     }
 
-    public void addTransition(Transition t) {
 
+    public void addTransition(Transition t) {
+        if (transitions == null) transitions = new HashSet<>();
+        transitions.add(t);
     }
 
-    public String getType() {
+    public String getAutomatonType() {
         return type;
     }
 
@@ -47,33 +52,43 @@ public class Automaton {
         this.type = type;
     }
 
-    public List<State> getInitialStates() {
+
+    public Set<String> getAlphabet() {
+        return alphabet;
+    }
+
+    public void setAlphabet(Set<String> alphabet) {
+        this.alphabet = alphabet;
+    }
+
+    public Set<State> getInitialStates() {
         return initialStates;
     }
 
-    public void setInitialStates(List<State> initialStates) {
+    public void setInitialStates(Set<State> initialStates) {
         this.initialStates = initialStates;
     }
 
-    public List<State> getFinalStates() {
+    public Set<State> getFinalStates() {
         return finalStates;
     }
 
-    public void setFinalStates(List<State> finalStates) {
+    public void setFinalStates(Set<State> finalStates) {
         this.finalStates = finalStates;
     }
 
     public void addInitialState(State state) {
-        if (initialStates == null) initialStates = new ArrayList<>();
+        if (initialStates == null) initialStates = new HashSet<>();
         initialStates.add(state);
     }
 
     public void addFinalState(State state) {
-        if (finalStates == null) finalStates = new ArrayList<>();
+        if (finalStates == null) finalStates = new HashSet<>();
         finalStates.add(state);
     }
 
-    public State createState(Point point) {
-        return null;
+    public void addAlphabetSymbol(String value) {
+        if (alphabet == null) alphabet = new HashSet<>();
+        alphabet.add(value);
     }
 }

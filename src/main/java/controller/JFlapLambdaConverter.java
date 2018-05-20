@@ -8,13 +8,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class JFlapLambdaConverter {
 
-    public static  void  main(String[] args){
+    public static void main(String[] args) {
         //JFileChooser chooser = new JFileChooser();
         //chooser.addChoosableFileFilter(new FileNameExtensionFilter("Arquivos JFLAP4", ".jff"));
         //int returned = chooser.showOpenDialog(null);
         //if (returned == JFileChooser.APPROVE_OPTION) {
-            AutomatonStructure structure =  new AutomatonReader().readAutomatonFromFile("/home/gunna/JFLAP-Lambda-Converter/src/main/java/controller/teste.jff");
-
+        AutomatonStructure structure = new AutomatonReader().readAutomatonFromFile("/home/gunna/JFLAP-Lambda-Converter/src/main/java/controller/teste.jff");
+        new NdfaConverter().getDfaFromNdfa(structure.getAutomaton());
         //}
 
     }

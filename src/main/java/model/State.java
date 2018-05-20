@@ -3,6 +3,8 @@ package model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class State {
@@ -20,6 +22,10 @@ public class State {
     @SerializedName("id")
     private int id;
 
+
+    private Set<State> mergedStates;
+
+
     public State(String name, int xPosition, int yPosition, int id) {
         this.name = name;
         this.xPosition = xPosition;
@@ -27,6 +33,23 @@ public class State {
         this.id = id;
     }
 
+    public State() {
+
+    }
+
+
+    public boolean isMerged() {
+        return mergedStates != null && mergedStates.size() > 0;
+    }
+
+
+    public Set<State> getMergedStates() {
+        return mergedStates;
+    }
+
+    public void setMergedStates(Set<State> mergedStates) {
+        this.mergedStates = mergedStates;
+    }
 
     public boolean isInitialState() {
         return initialState;
@@ -74,5 +97,10 @@ public class State {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void addMergedState(State state) {
+        if (mergedStates == null) mergedStates = new HashSet<>();
+        mergedStates.add(state);
     }
 }
