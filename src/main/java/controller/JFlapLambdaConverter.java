@@ -1,5 +1,6 @@
 package controller;
 
+import model.Automaton;
 import model.AutomatonStructure;
 
 
@@ -14,7 +15,18 @@ public class JFlapLambdaConverter {
         //int returned = chooser.showOpenDialog(null);
         //if (returned == JFileChooser.APPROVE_OPTION) {
         AutomatonStructure structure = new AutomatonReader().readAutomatonFromFile("/home/gunna/JFLAP-Lambda-Converter/src/main/java/controller/teste2.jff");
-        new NdfaConverter().getDfaFromNdfa(structure.getAutomaton());
+        Automaton automaton = new NdfaConverter().getDfaFromNdfa(structure.getAutomaton());
+        new DfaAutomatonSimulator().makeSimulation(automaton, "0101", new DfaAutomatonSimulator.SimulationListener() {
+            @Override
+            public void onAccept() {
+                System.out.println("A entrada é reconhecida pelo automato!");
+            }
+
+            @Override
+            public void onError(String msg) {
+                System.out.println(msg);
+            }
+        });
         //}
 
     }

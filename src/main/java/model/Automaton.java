@@ -4,6 +4,7 @@ package model;
 import com.google.gson.annotations.SerializedName;
 
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +20,15 @@ public class Automaton {
     private Set<String> alphabet;
     private State initialState;
     private Set<State> finalStates;
+    private HashMap<State,HashMap<String,State>> dfaMatrix;
+
+    public HashMap<State, HashMap<String, State>> getDfaMatrix() {
+        return dfaMatrix;
+    }
+
+    public void setDfaMatrix(HashMap<State, HashMap<String, State>> dfaMatrix) {
+        this.dfaMatrix = dfaMatrix;
+    }
 
     public Set<State> getStates() {
         return states;

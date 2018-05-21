@@ -6,6 +6,8 @@ import model.Transition;
 
 import java.util.*;
 
+import static controller.Constants.DFA;
+
 public class NdfaConverter {
     private HashMap<State, HashMap<String, Set<State>>> ndfaAutomatonMatrix;
     private HashMap<State, HashMap<String, State>> dfaMatrix;
@@ -23,18 +25,22 @@ public class NdfaConverter {
         fillNdfaAutomatonMatrix(ndfaAutomaton);
         List<State> dfaStates = buildDfaMatrixAndGetDfaStates(ndfaAutomaton);
         List<Transition> dfaTransitions = getTransitions(dfaStates);
-
-        return null;
+        dfaAutomaton.setStates(new HashSet<>(dfaStates));
+        dfaAutomaton.setType(DFA);
+        dfaAutomaton.setDfaMatrix(dfaMatrix);
+        dfaAutomaton.setAlphabet(ndfaAutomaton.getAlphabet());
+        dfaAutomaton.setTransitions(new HashSet<>(dfaTransitions));
+        dfaAutomaton.fillInitialAndFinalStates();
+        return dfaAutomaton;
     }
 
     private List<Transition> getTransitions(List<State> dfaStates) {
         List<Transition> transitions = new ArrayList<>();
         for (Map.Entry<State, HashMap<String, State>> i : dfaMatrix.entrySet()) {
             for (Map.Entry<String, State> j : i.getValue().entrySet()) {
-                transitions.add(new Transition(j.getKey(), i.getKey().getName(), j.getValue().getName()));
+                transitions.add(new Transition(j.getKey(), i.getKey().getId(), j.getValue().getId()));
             }
         }
-
         return transitions;
     }
 
@@ -47,7 +53,6 @@ public class NdfaConverter {
         for (int state = 0; state < dfaStates.size(); state++) {
             State currentState = dfaStates.get(state);
             HashMap<String, State> value = new HashMap<>();
-
             for (String terminal : ndfaAutomaton.getAlphabet()) {
                 State newState = ndfaAutomatonMatrix.containsKey(currentState) ?
                         getMergedState(ndfaAutomatonMatrix.get(currentState).get(terminal)) :
@@ -68,7 +73,6 @@ public class NdfaConverter {
             } else {
                 dfaMatrix.get(currentState).putAll(value);
             }
-            //System.out.println(dfaStates.toString());
         }
 
         return verifyFinalAndInitialStates(removeInitials(dfaStates, nameAux), ndfaAutomaton.getInitialState());
@@ -83,6 +87,8 @@ public class NdfaConverter {
                     state.setInitialState(true);
             }
         }
+
+        //TODO: remover estado inicial se ele possuir loop
         dfaMatrix.remove(initialState);
         return states;
     }

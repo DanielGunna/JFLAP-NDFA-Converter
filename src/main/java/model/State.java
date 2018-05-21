@@ -62,7 +62,15 @@ public class State {
     }
 
     public boolean isFinalState() {
-        return finalState;
+        return isMerged() ? verifyMergedStates() : finalState;
+    }
+
+    private boolean verifyMergedStates() {
+        for (State state : mergedStates) {
+            if (state.isFinalState())
+                return true;
+        }
+        return false;
     }
 
     public void setFinalState(boolean finalState) {
