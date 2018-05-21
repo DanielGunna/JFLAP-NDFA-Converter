@@ -4,9 +4,7 @@ package model;
 import com.google.gson.annotations.SerializedName;
 
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -19,7 +17,7 @@ public class Automaton {
 
     private String type;
     private Set<String> alphabet;
-    private Set<State> initialStates;
+    private State initialState;
     private Set<State> finalStates;
 
     public Set<State> getStates() {
@@ -38,6 +36,17 @@ public class Automaton {
         this.transitions = transitions;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public State getInitialState() {
+        return initialState;
+    }
+
+    public void setInitialState(State initialState) {
+        this.initialState = initialState;
+    }
 
     public void addTransition(Transition t) {
         if (transitions == null) transitions = new HashSet<>();
@@ -61,13 +70,6 @@ public class Automaton {
         this.alphabet = alphabet;
     }
 
-    public Set<State> getInitialStates() {
-        return initialStates;
-    }
-
-    public void setInitialStates(Set<State> initialStates) {
-        this.initialStates = initialStates;
-    }
 
     public Set<State> getFinalStates() {
         return finalStates;
@@ -78,8 +80,8 @@ public class Automaton {
     }
 
     public void addInitialState(State state) {
-        if (initialStates == null) initialStates = new HashSet<>();
-        initialStates.add(state);
+        if (initialState == null)
+            initialState = state;
     }
 
     public void addFinalState(State state) {

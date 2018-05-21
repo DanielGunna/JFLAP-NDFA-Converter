@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="626dc721-75c6-45b3-a852-ad8aab2d11c0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/controller/AutomatonReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/controller/AutomatonReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/controller/JFlapLambdaConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/controller/JFlapLambdaConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/controller/NdfaConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/controller/NdfaConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/model/Automaton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/model/Automaton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/model/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/model/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/model/Transition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/model/Transition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Automaton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Automaton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Transition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Transition.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,8 +35,8 @@
       <file leaf-file-name="Automaton.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Automaton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="104" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="300">
+              <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#501#502#0" expanded="true" />
@@ -57,6 +47,12 @@
                 <element signature="e#695#696#0" expanded="true" />
                 <element signature="e#758#759#0" expanded="true" />
                 <element signature="e#804#805#0" expanded="true" />
+                <element signature="e#830#831#0" expanded="true" />
+                <element signature="e#857#858#0" expanded="true" />
+                <element signature="e#896#897#0" expanded="true" />
+                <element signature="e#932#933#0" expanded="true" />
+                <element signature="e#989#990#0" expanded="true" />
+                <element signature="e#1039#1040#0" expanded="true" />
                 <element signature="e#990#991#0" expanded="true" />
                 <element signature="e#1017#1018#0" expanded="true" />
               </folding>
@@ -67,8 +63,8 @@
       <file leaf-file-name="JFlapLambdaConverter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="200">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +75,8 @@
       <file leaf-file-name="NdfaConverter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+            <state relative-caret-position="45">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,8 +87,8 @@
       <file leaf-file-name="AutomatonReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="47" selection-end-column="7" />
+            <state relative-caret-position="391">
+              <caret line="63" column="6" lean-forward="true" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +108,8 @@
       <file leaf-file-name="State.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
+            <state relative-caret-position="826">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#517#518#0" expanded="true" />
@@ -128,10 +124,12 @@
       <file leaf-file-name="Transition.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+            <state>
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#485#486#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -569,9 +567,9 @@
         <option value="$PROJECT_DIR$/src/main/java/model/AutomatonWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Transition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Automaton.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/State.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Automaton.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Transition.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java" />
       </list>
     </option>
@@ -796,12 +794,12 @@
       <workItem from="1526771868511" duration="2782000" />
       <workItem from="1526785572505" duration="600000" />
       <workItem from="1526838134728" duration="24899000" />
-      <workItem from="1526874139212" duration="1180000" />
+      <workItem from="1526874139212" duration="6747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53083000" />
+    <option name="totallyTimeSpent" value="58650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -829,7 +827,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.56243443" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.56243443" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32948583" />
@@ -889,18 +887,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java</url>
-          <line>27</line>
+          <line>33</line>
           <properties />
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java</url>
-          <line>53</line>
-          <properties />
-          <option name="timeStamp" value="115" />
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="116" />
+      <option name="time" value="168" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -917,6 +909,16 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>dfaMatrix</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>ndfaAutomaton.getAlphabet()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>dfaAutomaton.getFinalStates()</expression-string>
         <language-id>JAVA</language-id>
@@ -952,16 +954,6 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>new File(xmlFile)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>file</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
@@ -969,6 +961,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1003,6 +1005,12 @@
             <element signature="e#695#696#0" expanded="true" />
             <element signature="e#758#759#0" expanded="true" />
             <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
             <element signature="e#990#991#0" expanded="true" />
             <element signature="e#1017#1018#0" expanded="true" />
           </folding>
@@ -1068,6 +1076,12 @@
             <element signature="e#695#696#0" expanded="true" />
             <element signature="e#758#759#0" expanded="true" />
             <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
             <element signature="e#990#991#0" expanded="true" />
             <element signature="e#1017#1018#0" expanded="true" />
           </folding>
@@ -1161,6 +1175,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1192,36 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Automaton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#578#579#0" expanded="true" />
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#661#662#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/StrictMath.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -1245,8 +1239,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
+        <state relative-caret-position="826">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#517#518#0" expanded="true" />
@@ -1257,20 +1251,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="391">
+          <caret line="63" column="6" lean-forward="true" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/AutomatonReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Automaton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="47" selection-end-column="7" />
+        <state relative-caret-position="300">
+          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#932#933#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1017#1018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Transition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/JFlapLambdaConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1279,8 +1311,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/NdfaConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="43" column="57" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+        <state relative-caret-position="45">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

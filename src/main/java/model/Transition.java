@@ -18,6 +18,11 @@ public class Transition {
         this.toId = toId;
     }
 
+    @Override
+    public String toString() {
+        return fromId + "," + value + " : -> " + toId;
+    }
+
     public String getFromId() {
         return fromId;
     }

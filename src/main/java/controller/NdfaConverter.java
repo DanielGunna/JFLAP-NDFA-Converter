@@ -4,7 +4,6 @@ import model.Automaton;
 import model.State;
 import model.Transition;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class NdfaConverter {
@@ -22,39 +21,80 @@ public class NdfaConverter {
     private Automaton convertNdfaAutomatonToDfa(Automaton ndfaAutomaton) {
         Automaton dfaAutomaton = new Automaton();
         fillNdfaAutomatonMatrix(ndfaAutomaton);
-        buildDfaMatrix(ndfaAutomaton);
-
+        List<State> dfaStates = buildDfaMatrixAndGetDfaStates(ndfaAutomaton);
+        List<Transition> dfaTransitions = getTransitions(dfaStates);
 
         return null;
     }
 
-    private void buildDfaMatrix(Automaton ndfaAutomaton) {
-        List<State> dfaStates = new ArrayList<>(ndfaAutomaton.getInitialStates());
+    private List<Transition> getTransitions(List<State> dfaStates) {
+        List<Transition> transitions = new ArrayList<>();
+        for (Map.Entry<State, HashMap<String, State>> i : dfaMatrix.entrySet()) {
+            for (Map.Entry<String, State> j : i.getValue().entrySet()) {
+                transitions.add(new Transition(j.getKey(), i.getKey().getName(), j.getValue().getName()));
+            }
+        }
+
+        return transitions;
+    }
+
+    private List<State> buildDfaMatrixAndGetDfaStates(Automaton ndfaAutomaton) {
+        List<State> dfaStates = new ArrayList<>();
+        dfaStates.add(ndfaAutomaton.getInitialState());
         dfaMatrix = new HashMap<>();
         List<String> names = new ArrayList<>();
         List<String> nameAux = new ArrayList<>();
         for (int state = 0; state < dfaStates.size(); state++) {
             State currentState = dfaStates.get(state);
+            HashMap<String, State> value = new HashMap<>();
+
             for (String terminal : ndfaAutomaton.getAlphabet()) {
-                HashMap<String, State> value = new HashMap<>();
                 State newState = ndfaAutomatonMatrix.containsKey(currentState) ?
-                        getIds(ndfaAutomatonMatrix.get(currentState).get(terminal)) :
-                        getIds(currentState.getName(), terminal);
-
-                if (!nameAux.contains(newState.getName())) {
-                    nameAux.add(newState.getName());
-                    dfaStates.add(newState);
-                    value.put(terminal, newState);
-                }
-
-                if (!names.contains(currentState.getName())) {
-                    dfaMatrix.put(currentState, value);
-                    names.add(currentState.getName());
-                }
+                        getMergedState(ndfaAutomatonMatrix.get(currentState).get(terminal)) :
+                        getMergedState(currentState.getName(), terminal);
+                if (newState != null)
+                    if (!nameAux.contains(newState.getName())) {
+                        nameAux.add(newState.getName());
+                        dfaStates.add(newState);
+                        value.put(terminal, newState);
+                    } else {
+                        value.put(terminal, newState);
+                    }
             }
-            System.out.println(dfaStates.toString());
+
+            if (!names.contains(currentState.getName())) {
+                dfaMatrix.put(currentState, value);
+                names.add(currentState.getName());
+            } else {
+                dfaMatrix.get(currentState).putAll(value);
+            }
+            //System.out.println(dfaStates.toString());
         }
-        dfaStates.remove(ndfaAutomaton.getInitialStates());
+
+        return verifyFinalAndInitialStates(removeInitials(dfaStates, nameAux), ndfaAutomaton.getInitialState());
+    }
+
+    private List<State> verifyFinalAndInitialStates(List<State> states, State initialState) {
+        for (State state : states) {
+            for (State s : state.getMergedStates()) {
+                if (s.isFinalState())
+                    state.setFinalState(true);
+                if (s.getId().equals(initialState.getId()) && state.getMergedStates().size() == 1)
+                    state.setInitialState(true);
+            }
+        }
+        dfaMatrix.remove(initialState);
+        return states;
+    }
+
+    private List<State> removeInitials(List<State> dfaStates, List<String> nameAux) {
+        List<State> states = new ArrayList<>();
+        for (State state : dfaStates) {
+            if (nameAux.contains(state.getName())) {
+                states.add(state);
+            }
+        }
+        return states;
     }
 
     private void fillNdfaAutomatonMatrix(Automaton ndfaAutomaton) {
@@ -68,18 +108,19 @@ public class NdfaConverter {
         }
     }
 
-    private State getIds(String name, String terminal) {
-        List<String> ids = Arrays.asList(name.replace("{", "").replace("}", "").split(","));
+    private State getMergedState(String name, String terminal) {
+        List<String> ids = Arrays.asList(name
+                .replace("{", "").replace("}", "").split(","));
         Set<State> states = new HashSet<>();
         for (Map.Entry<State, HashMap<String, Set<State>>> i : ndfaAutomatonMatrix.entrySet()) {
             if (ids.contains(i.getKey().getId()) && i.getValue().get(terminal).size() > 0) {
                 states.addAll(new ArrayList<>(i.getValue().get(terminal)));
             }
         }
-        return getIds(states);
+        return getMergedState(states);
     }
 
-    private State getIds(Set<State> states) {
+    private State getMergedState(Set<State> states) {
         String ids = "";
         State state = new State();
         if (states == null) return null;
