@@ -2,80 +2,103 @@ package controller;
 
 import model.Automaton;
 import model.State;
+import model.Transition;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class NdfaConverter {
+    private HashMap<State, HashMap<String, Set<State>>> ndfaAutomatonMatrix;
+    private HashMap<State, HashMap<String, State>> dfaMatrix;
 
 
     public Automaton getDfaFromNdfa(Automaton ndfaAutomaton) {
         if (ndfaAutomaton.getAutomatonType().equals(Constants.NDFA)) {
-            return convertNdfaAutomatonoDfa(ndfaAutomaton);
+            return convertNdfaAutomatonToDfa(ndfaAutomaton);
         }
         return ndfaAutomaton;
     }
 
-    private Automaton convertNdfaAutomatonoDfa(Automaton ndfaAutomaton) {
-        //Cria novo conjunto de estados
-        Set<State> dfaStates = new HashSet<>();
-        //Add estado iniciial ao conjunto
-        dfaStates.addAll(ndfaAutomaton.getInitialStates());
-        dfaStates.addAll(generatePowSet(ndfaAutomaton));
+    private Automaton convertNdfaAutomatonToDfa(Automaton ndfaAutomaton) {
+        Automaton dfaAutomaton = new Automaton();
+        fillNdfaAutomatonMatrix(ndfaAutomaton);
+        buildDfaMatrix(ndfaAutomaton);
+
 
         return null;
     }
 
-    /**
-     * A function to get list of states from  power set of  state's set  of an given automaton
-     *
-     * @param ndfaAutomaton
-     * @return Set of states
-     */
-    private Set<State> generatePowSet(Automaton ndfaAutomaton) {
-        Set<Set<State>> powerSets = powerSet(ndfaAutomaton.getStates());
-        Set<State> newStates = new HashSet<>();
-        for (Set<State> set : powerSets) {
-            if (set.size() > 0) {
-                State newState = new State();
-                String stateName = "";
-                for (State s : set) {
-                    stateName += s.getName() + ",";
-                    newState.addMergedState(s);
-                    if(s.isFinalState()){
-                        newState.setFinalState(true);
-                    }
+    private void buildDfaMatrix(Automaton ndfaAutomaton) {
+        List<State> dfaStates = new ArrayList<>(ndfaAutomaton.getInitialStates());
+        dfaMatrix = new HashMap<>();
+        List<String> names = new ArrayList<>();
+        List<String> nameAux = new ArrayList<>();
+        for (int state = 0; state < dfaStates.size(); state++) {
+            State currentState = dfaStates.get(state);
+            for (String terminal : ndfaAutomaton.getAlphabet()) {
+                HashMap<String, State> value = new HashMap<>();
+                State newState = ndfaAutomatonMatrix.containsKey(currentState) ?
+                        getIds(ndfaAutomatonMatrix.get(currentState).get(terminal)) :
+                        getIds(currentState.getName(), terminal);
+
+                if (!nameAux.contains(newState.getName())) {
+                    nameAux.add(newState.getName());
+                    dfaStates.add(newState);
+                    value.put(terminal, newState);
                 }
-                newState.setName(String.format("[%s]", stateName.substring(0, stateName.length() - 1)));
-                newStates.add(newState);
+
+                if (!names.contains(currentState.getName())) {
+                    dfaMatrix.put(currentState, value);
+                    names.add(currentState.getName());
+                }
             }
+            System.out.println(dfaStates.toString());
         }
-        return newStates;
+        dfaStates.remove(ndfaAutomaton.getInitialStates());
     }
 
-
-    /**
-     * A recursive function to calculate power set of a set of states
-     *
-     * @param originalSet
-     * @return The power set of states
-     */
-    private Set<Set<State>> powerSet(Set<State> originalSet) {
-        Set<Set<State>> sets = new HashSet<>();
-        if (!originalSet.isEmpty()) {
-            List<State> list = new ArrayList<>(originalSet);
-            State head = list.get(0);
-            Set<State> rest = new HashSet<>(list.subList(1, list.size()));
-            for (Set<State> set : powerSet(rest)) {
-                Set<State> newSet = new HashSet<>();
-                newSet.add(head);
-                newSet.addAll(set);
-                sets.add(newSet);
-                sets.add(set);
+    private void fillNdfaAutomatonMatrix(Automaton ndfaAutomaton) {
+        ndfaAutomatonMatrix = new HashMap<>();
+        for (State state : ndfaAutomaton.getStates()) {
+            HashMap<String, Set<State>> symbolsMap = new HashMap<>();
+            for (String terminal : ndfaAutomaton.getAlphabet()) {
+                symbolsMap.put(terminal, getStatesByTerminal(state, terminal, ndfaAutomaton));
             }
-        } else {
-            sets.add(new HashSet<>());
+            ndfaAutomatonMatrix.put(state, symbolsMap);
         }
-        return sets;
+    }
+
+    private State getIds(String name, String terminal) {
+        List<String> ids = Arrays.asList(name.replace("{", "").replace("}", "").split(","));
+        Set<State> states = new HashSet<>();
+        for (Map.Entry<State, HashMap<String, Set<State>>> i : ndfaAutomatonMatrix.entrySet()) {
+            if (ids.contains(i.getKey().getId()) && i.getValue().get(terminal).size() > 0) {
+                states.addAll(new ArrayList<>(i.getValue().get(terminal)));
+            }
+        }
+        return getIds(states);
+    }
+
+    private State getIds(Set<State> states) {
+        String ids = "";
+        State state = new State();
+        if (states == null) return null;
+        for (State s : states) {
+            state.addMergedState(s);
+            ids += s.getId() + ",";
+        }
+        state.setName(String.format("{%s}", ids.substring(0, ids.length() - 1)));
+        state.setId(ids);
+        return state;
+    }
+
+    private Set<State> getStatesByTerminal(State state, String terminal, Automaton ndfaAutomaton) {
+        Set<Transition> transitions = ndfaAutomaton.getTransitionsByStateAndTerminal(state, terminal);
+        Set<State> states = new HashSet<>();
+        for (Transition t : transitions) {
+            states.add(ndfaAutomaton.findStateById(t.getToId()));
+        }
+        return states;
     }
 
 

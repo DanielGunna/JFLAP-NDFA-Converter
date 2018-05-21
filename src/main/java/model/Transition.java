@@ -8,13 +8,29 @@ public class Transition {
     @SerializedName("read")
     private String value;
     @SerializedName("from")
-    private int fromId;
+    private String fromId;
     @SerializedName("to")
-    private int toId;
+    private String toId;
 
-    public Transition(String value, int fromId, int toId) {
+    public Transition(String value, String fromId, String toId) {
         this.value = value;
         this.fromId = fromId;
+        this.toId = toId;
+    }
+
+    public String getFromId() {
+        return fromId;
+    }
+
+    public void setFromId(String fromId) {
+        this.fromId = fromId;
+    }
+
+    public String getToId() {
+        return toId;
+    }
+
+    public void setToId(String toId) {
         this.toId = toId;
     }
 
@@ -26,21 +42,6 @@ public class Transition {
         this.value = value;
     }
 
-    public int getFromId() {
-        return fromId;
-    }
-
-    public void setFromId(int fromId) {
-        this.fromId = fromId;
-    }
-
-    public int getToId() {
-        return toId;
-    }
-
-    public void setToId(int toId) {
-        this.toId = toId;
-    }
 
     public boolean isLambdaTransition() {
         return value.equals(Constants.LAMBDA);

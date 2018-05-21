@@ -91,4 +91,30 @@ public class Automaton {
         if (alphabet == null) alphabet = new HashSet<>();
         alphabet.add(value);
     }
+
+    public void fillInitialAndFinalStates() {
+        for (State s : getStates()) {
+            if (s.isFinalState())
+                addFinalState(s);
+            if (s.isInitialState())
+                addInitialState(s);
+        }
+    }
+
+    public Set<Transition> getTransitionsByStateAndTerminal(State s, String value) {
+        Set<Transition> transitions = new HashSet<>();
+        for (Transition t : getTransitions()) {
+            if (t.getFromId().equals(s.getId()) && t.getValue().equals(value))
+                transitions.add(t);
+        }
+        return transitions;
+    }
+
+    public State findStateById(String id) {
+        for (State state : getStates()) {
+            if (state.getId().equals(id))
+                return state;
+        }
+        return null;
+    }
 }

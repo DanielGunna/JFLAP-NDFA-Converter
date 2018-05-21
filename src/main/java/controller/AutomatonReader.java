@@ -8,6 +8,12 @@ import org.json.JSONObject;
 import org.json.XML;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import static controller.Constants.DFA;
+import static controller.Constants.NDFA;
 
 /**
  * @author Daniel Gunna
@@ -75,18 +81,13 @@ public class AutomatonReader {
      */
     private AutomatonWrapper fillInitialsAndFinalStates(AutomatonWrapper automatonWrapper) {
         Automaton automaton = automatonWrapper.getAutomatonStructure().getAutomaton();
-        for (State s : automaton.getStates()) {
-            if (s.isFinalState())
-                automaton.addFinalState(s);
-            if (s.isInitialState())
-                automaton.addInitialState(s);
-        }
+        automaton.fillInitialAndFinalStates();
         return automatonWrapper;
     }
 
     /**
      * Function to determinate automaton type.
-     * Possibles values are {@link Constants.DFA}(Deterministic Finite Automaton) and {@link Constants.NDFA}
+     * Possibles values are {@link DFA}(Deterministic Finite Automaton) and {@link NDFA}
      * (Non-Deterministic Finite Automaton)
      *
      * @param automatonWrapper Automaton data wrapped by an {@link AutomatonWrapper} object
@@ -94,11 +95,14 @@ public class AutomatonReader {
      */
     private AutomatonWrapper fillAutomatonType(AutomatonWrapper automatonWrapper) {
         Automaton automaton = automatonWrapper.getAutomatonStructure().getAutomaton();
+        List<String> terminals = new ArrayList<>();
         //Assume that it's an DFA
-        automaton.setType(Constants.DFA);
+        automaton.setType(DFA);
         for (Transition transition : automaton.getTransitions()) {
-            if (transition.isLambdaTransition()) {
-                automaton.setType(Constants.NDFA);
+            if (!terminals.contains(transition.getValue())) {
+                terminals.add(transition.getValue());
+            } else {
+                automaton.setType(NDFA);
                 break;
             }
         }

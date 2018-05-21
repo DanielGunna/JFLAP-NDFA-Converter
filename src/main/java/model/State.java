@@ -20,16 +20,18 @@ public class State {
     @SerializedName("y")
     private int yPosition;
     @SerializedName("id")
-    private int id;
+    private String id;
 
+    @Override
+    public String toString() {
+        return name;
+    }
 
     private Set<State> mergedStates;
 
 
-    public State(String name, int xPosition, int yPosition, int id) {
+    public State(String name, String id) {
         this.name = name;
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
         this.id = id;
     }
 
@@ -91,11 +93,11 @@ public class State {
         this.yPosition = yPosition;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
