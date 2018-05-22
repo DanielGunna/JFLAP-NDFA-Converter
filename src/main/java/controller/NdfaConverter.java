@@ -57,7 +57,7 @@ public class NdfaConverter {
                 State newState = ndfaAutomatonMatrix.containsKey(currentState) ?
                         getMergedState(ndfaAutomatonMatrix.get(currentState).get(terminal)) :
                         getMergedState(currentState.getName(), terminal);
-                if (newState != null)
+                if (newState != null) {
                     if (!nameAux.contains(newState.getName())) {
                         nameAux.add(newState.getName());
                         dfaStates.add(newState);
@@ -65,6 +65,7 @@ public class NdfaConverter {
                     } else {
                         value.put(terminal, newState);
                     }
+                }
             }
 
             if (!names.contains(currentState.getName())) {

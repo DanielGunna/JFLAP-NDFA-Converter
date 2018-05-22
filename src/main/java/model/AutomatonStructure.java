@@ -1,15 +1,16 @@
 package model;
 
 
-
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AutomatonStructure {
-
-   @SerializedName("type")
-   private String type;
-   @SerializedName("automaton")
-   private Automaton automaton;
+    @Expose
+    @SerializedName("type")
+    private String type;
+    @Expose
+    @SerializedName("automaton")
+    private Automaton automaton;
 
     public String getType() {
         return type;

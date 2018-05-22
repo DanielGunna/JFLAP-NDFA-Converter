@@ -1,6 +1,7 @@
 package model;
 
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -10,9 +11,10 @@ import java.util.Set;
 
 
 public class Automaton {
-
+    @Expose
     @SerializedName("state")
     private Set<State> states;
+    @Expose
     @SerializedName("transition")
     private Set<Transition> transitions;
 
@@ -128,5 +130,14 @@ public class Automaton {
                 return state;
         }
         return null;
+    }
+
+    public Set<Transition> getTransitionsByState(State state) {
+        Set<Transition> transitions = new HashSet<>();
+        for (Transition t : getTransitions()) {
+            if (t.getFromId().equals(state.getId()))
+                transitions.add(t);
+        }
+        return transitions;
     }
 }

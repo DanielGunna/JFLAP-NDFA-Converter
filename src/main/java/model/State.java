@@ -1,6 +1,7 @@
 package model;
 
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashSet;
@@ -9,16 +10,22 @@ import java.util.Set;
 
 public class State {
 
+    @Expose
     @SerializedName("initial")
     private boolean initialState;
+    @Expose
     @SerializedName("final")
     private boolean finalState;
+    @Expose
     @SerializedName("name")
     private String name;
+    @Expose
     @SerializedName("x")
     private int xPosition;
+    @Expose
     @SerializedName("y")
     private int yPosition;
+    @Expose
     @SerializedName("id")
     private String id;
 

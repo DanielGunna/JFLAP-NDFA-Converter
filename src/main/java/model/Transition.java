@@ -1,14 +1,18 @@
 package model;
 
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import controller.Constants;
 
 public class Transition {
+    @Expose
     @SerializedName("read")
     private String value;
+    @Expose
     @SerializedName("from")
     private String fromId;
+    @Expose
     @SerializedName("to")
     private String toId;
 
