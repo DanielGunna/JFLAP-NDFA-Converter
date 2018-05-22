@@ -3,13 +3,12 @@ package controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.*;
-import org.json.JSONObject;
-import org.json.XML;
+ 
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Set;
+
 
 import static controller.Constants.JFLAP_FILE_HEADER;
 
@@ -84,16 +83,6 @@ public class AutomatonWriter {
             );
         }
 
-    }
-
-    private String convertJsonToXml(String json) {
-        try {
-            return XML.toString(new JSONObject(json));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
     private void fillXY(Automaton automaton) {
