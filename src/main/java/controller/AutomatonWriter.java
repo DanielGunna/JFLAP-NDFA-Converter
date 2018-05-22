@@ -3,7 +3,7 @@ package controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.*;
- 
+
 
 import java.io.File;
 import java.io.FileWriter;
@@ -15,7 +15,7 @@ import static controller.Constants.JFLAP_FILE_HEADER;
 public class AutomatonWriter {
 
 
-    public void getJflapFileContentFromAutomaton(Automaton automaton) {
+    public String getJflapFileContentFromAutomaton(Automaton automaton) {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         AutomatonStructure automatonStructure = new AutomatonStructure();
         automatonStructure.setType("fa");
@@ -25,11 +25,12 @@ public class AutomatonWriter {
 
         String content = convertJsonAutomatonToXml(automaton);
         String xml = JFLAP_FILE_HEADER + "\n" + content;
-        try {
-            saveJflapFile(xml, "/home/gunna/");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       // try {
+         //   saveJflapFile(xml, "/home/gunna/");
+       // } catch (IOException e) {
+         //   e.printStackTrace();
+        //}
+        return xml;
     }
 
     public void saveJflapFile(String content, String path) throws IOException {

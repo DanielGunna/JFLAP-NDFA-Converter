@@ -11,15 +11,15 @@ import java.util.Set;
 public class DfaAutomatonSimulator {
 
     public interface SimulationListener {
-        void onAccept(List<String> simulation);
+        void onAccept(String simulation);
 
-        void onError(String msg, List<String> simulation);
+        void onError(String msg, String simulation);
     }
 
     public void makeSimulation(Automaton automaton, String sentence, SimulationListener listener) {
         State currentState = automaton.getInitialState();
         String read = "";
-        List<String> simulation = new ArrayList<>();
+        String simulation = "";
         for (int x = 0; x < sentence.length(); x++) {
             String input = String.valueOf(sentence.charAt(x));
             read += input;
@@ -39,7 +39,7 @@ public class DfaAutomatonSimulator {
                     currentState = automaton.findStateById(transition.getToId());
                     String simulationStep = String.format("[%s,%s] -> %s ", oldState.getName(), read, currentState.getName());
                     System.out.println(simulationStep);
-                    simulation.add(simulationStep);
+                    simulation += simulationStep + "\n";
                 }
 
             } else {
