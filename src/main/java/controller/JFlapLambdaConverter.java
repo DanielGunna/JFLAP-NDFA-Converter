@@ -50,7 +50,7 @@ public class JFlapLambdaConverter {
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 AutomatonWriter writer = new AutomatonWriter();
                 try {
-                    writer.saveJflapFile(writer.getJflapFileContentFromAutomaton(automaton), chooser.getCurrentDirectory().getAbsolutePath());
+                    writer.saveJflapFile(writer.getJflapFileContentFromAutomaton(automaton), chooser.getSelectedFile().toString());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

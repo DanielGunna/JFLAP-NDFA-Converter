@@ -6,6 +6,7 @@ import model.*;
 
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -35,8 +36,9 @@ public class AutomatonWriter {
 
     public void saveJflapFile(String content, String path) throws IOException {
         File file = new File(path + String.format("/teste_%s.jff", String.valueOf(Math.random()).replace(".", "_")));
-        FileWriter writer = new FileWriter(file);
-        writer.write(content);
+        file.createNewFile();
+        FileOutputStream writer = new FileOutputStream(file, false);
+        writer.write(content.getBytes());
         writer.close();
     }
 
