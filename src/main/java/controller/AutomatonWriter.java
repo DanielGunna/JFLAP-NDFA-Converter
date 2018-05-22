@@ -23,14 +23,8 @@ public class AutomatonWriter {
         normalizeIds(automaton);
         fillXY(automaton);
         automatonStructure.setAutomaton(automaton);
-
         String content = convertJsonAutomatonToXml(automaton);
         String xml = JFLAP_FILE_HEADER + "\n" + content;
-       // try {
-         //   saveJflapFile(xml, "/home/gunna/");
-       // } catch (IOException e) {
-         //   e.printStackTrace();
-        //}
         return xml;
     }
 
