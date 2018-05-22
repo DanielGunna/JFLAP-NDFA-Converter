@@ -75,7 +75,7 @@ public class AutomatonWriter {
             state.setName(state.getName()
                     .replace(",", "")
                     .replace("{", "")
-                    .replace("-", state.isInitialState() ? "-" : "")
+                    .replace("-1", "0")
                     .replace("}", ""));
             state.setId(
                     state.getId()
@@ -98,8 +98,8 @@ public class AutomatonWriter {
 
     private void fillXY(Automaton automaton) {
         for (State state : automaton.getStates()) {
-            state.setxPosition((int) (Math.random() * 100));
-            state.setyPosition((int) (Math.random() * 100));
+            state.setxPosition((int) ((Math.random() * 100) * Math.random() * 10));
+            state.setyPosition((int) ((Math.random() * 100) * Math.random() * 10));
         }
     }
 
