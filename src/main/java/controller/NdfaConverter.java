@@ -24,6 +24,8 @@ public class NdfaConverter {
         Automaton dfaAutomaton = new Automaton();
         fillNdfaAutomatonMatrix(ndfaAutomaton);
         List<State> dfaStates = buildDfaMatrixAndGetDfaStates(ndfaAutomaton);
+        if (!ndfaAutomaton.hasLoop(ndfaAutomaton.getInitialState()))
+            dfaStates.add(ndfaAutomaton.getInitialState());
         List<Transition> dfaTransitions = getTransitions(dfaStates);
         dfaAutomaton.setStates(new HashSet<>(dfaStates));
         dfaAutomaton.setType(DFA);
@@ -76,21 +78,23 @@ public class NdfaConverter {
             }
         }
 
-        return verifyFinalAndInitialStates(removeInitials(dfaStates, nameAux), ndfaAutomaton.getInitialState());
+        return verifyFinalAndInitialStates(removeInitials(dfaStates, nameAux), ndfaAutomaton);
     }
 
-    private List<State> verifyFinalAndInitialStates(List<State> states, State initialState) {
+    private List<State> verifyFinalAndInitialStates(List<State> states, Automaton ndfaAutomaton) {
         for (State state : states) {
             for (State s : state.getMergedStates()) {
                 if (s.isFinalState())
                     state.setFinalState(true);
-                if (s.getId().equals(initialState.getId()) && state.getMergedStates().size() == 1)
+                if (s.getId().equals(ndfaAutomaton.getInitialState().getId()) && state.getMergedStates().size() == 1)
                     state.setInitialState(true);
             }
         }
+        if (ndfaAutomaton.hasLoop(ndfaAutomaton.getInitialState())) {
+            states.remove(ndfaAutomaton.getInitialState());
+            dfaMatrix.remove(ndfaAutomaton.getInitialState());
+        }
 
-        //TODO: remover estado inicial se ele possuir loop
-        dfaMatrix.remove(initialState);
         return states;
     }
 
@@ -124,13 +128,13 @@ public class NdfaConverter {
                 states.addAll(new ArrayList<>(i.getValue().get(terminal)));
             }
         }
-        return getMergedState(states);
+        return states.size() > 0 ? getMergedState(states) : null;
     }
 
     private State getMergedState(Set<State> states) {
         String ids = "";
         State state = new State();
-        if (states == null) return null;
+        if (states == null || states.size() == 0) return null;
         for (State s : states) {
             state.addMergedState(s);
             ids += s.getId() + ",";

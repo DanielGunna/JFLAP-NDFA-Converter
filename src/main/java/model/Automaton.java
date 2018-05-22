@@ -22,7 +22,7 @@ public class Automaton {
     private Set<String> alphabet;
     private State initialState;
     private Set<State> finalStates;
-    private HashMap<State,HashMap<String,State>> dfaMatrix;
+    private HashMap<State, HashMap<String, State>> dfaMatrix;
 
     public HashMap<State, HashMap<String, State>> getDfaMatrix() {
         return dfaMatrix;
@@ -139,5 +139,14 @@ public class Automaton {
                 transitions.add(t);
         }
         return transitions;
+    }
+
+    public boolean hasLoop(State initialState) {
+        Set<Transition> transitions = getTransitionsByState(initialState);
+        for (Transition t : transitions) {
+            if (t.getToId().equals(initialState.getId()))
+                return true;
+        }
+        return false;
     }
 }

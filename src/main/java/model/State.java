@@ -61,7 +61,16 @@ public class State {
     }
 
     public boolean isInitialState() {
-        return initialState;
+        return isMerged() ? verifyMergedStatesInital() : initialState;
+    }
+
+    private boolean verifyMergedStatesInital() {
+        for (State state : mergedStates) {
+            if (state.isInitialState())
+                return mergedStates.size() == 1;
+        }
+        return false;
+
     }
 
     public void setInitialState(boolean initialState) {

@@ -34,7 +34,7 @@ public class AutomatonWriter {
     }
 
     public void saveJflapFile(String content, String path) throws IOException {
-        File file = new File(path + String.format("/te_%s.jff", String.valueOf(Math.random()).replace(".", "_")));
+        File file = new File(path + String.format("/teste_%s.jff", String.valueOf(Math.random()).replace(".", "_")));
         FileWriter writer = new FileWriter(file);
         writer.write(content);
         writer.close();
@@ -65,17 +65,25 @@ public class AutomatonWriter {
     }
 
     private void normalizeIds(Automaton automaton) {
+        for (Transition t : automaton.getTransitions()) {
+            State from = automaton.findStateById(t.getFromId());
+            State to = automaton.findStateById(t.getToId());
+            t.setFromId(t.getFromId().replace(",", "").replace("-", from.isInitialState() ? "-" : ""));
+            t.setToId(t.getToId().replace(",", "").replace("-", to.isInitialState() ? "-" : ""));
+        }
         for (State state : automaton.getStates()) {
             state.setName(state.getName()
                     .replace(",", "")
                     .replace("{", "")
+                    .replace("-", state.isInitialState() ? "-" : "")
                     .replace("}", ""));
-            state.setId(state.getId().replace(",", ""));
+            state.setId(
+                    state.getId()
+                            .replace(",", "")
+                            .replace("-", state.isInitialState() ? "-" : "")
+            );
         }
-        for (Transition t : automaton.getTransitions()) {
-            t.setFromId(t.getFromId().replace(",", ""));
-            t.setToId(t.getToId().replace(",", ""));
-        }
+
     }
 
     private String convertJsonToXml(String json) {
