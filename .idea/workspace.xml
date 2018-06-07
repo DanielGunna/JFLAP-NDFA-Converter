@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="626dc721-75c6-45b3-a852-ad8aab2d11c0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/out/artifacts/jflap_lambda_conveter_jar/jflap-lambda-conveter.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AutomatonWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AutomatonWriter.java" afterDir="false" />
-    </list>
+    <list default="true" id="626dc721-75c6-45b3-a852-ad8aab2d11c0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -586,7 +583,7 @@
     <option name="height" value="1004" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -641,29 +638,7 @@
           <expand>
             <path>
               <item name="jflap-lambda-conveter" type="58d84e3e:PackageViewProjectNode" />
-              <item name="jflap-lambda-conveter" type="eaaa3913:PackageViewModuleGroupNode" />
-            </path>
-            <path>
-              <item name="jflap-lambda-conveter" type="58d84e3e:PackageViewProjectNode" />
-              <item name="jflap-lambda-conveter" type="eaaa3913:PackageViewModuleGroupNode" />
               <item name="jflap-lambda-conveter_main" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="jflap-lambda-conveter" type="58d84e3e:PackageViewProjectNode" />
-              <item name="jflap-lambda-conveter" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="jflap-lambda-conveter_main" type="616d4139:PackageViewModuleNode" />
-              <item name="controller" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="jflap-lambda-conveter" type="58d84e3e:PackageViewProjectNode" />
-              <item name="jflap-lambda-conveter" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="jflap-lambda-conveter_main" type="616d4139:PackageViewModuleNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="jflap-lambda-conveter" type="58d84e3e:PackageViewProjectNode" />
-              <item name="jflap-lambda-conveter" type="eaaa3913:PackageViewModuleGroupNode" />
-              <item name="jflap-lambda-conveter_test" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -795,16 +770,15 @@
       <workItem from="1526940246944" duration="1022000" />
       <workItem from="1526956989768" duration="7627000" />
       <workItem from="1527012759635" duration="6952000" />
-      <workItem from="1527027427648" duration="4295000" />
+      <workItem from="1527027427648" duration="4978000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81638000" />
+    <option name="totallyTimeSpent" value="82321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -816,11 +790,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32948583" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32948583" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32948583" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29076838" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29076838" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32948583" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Gradle" order="3" />
