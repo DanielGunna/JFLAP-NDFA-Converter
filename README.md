@@ -6,17 +6,19 @@ A simple tool to convert [NDFA(Non-deterministic Finite Automaton)](https://en.w
 
 ## Conversion Strategy ##
 
-The approach used to convert a given NDFA is based on [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming). We create a data structure to represent NDFA as shown for sample automaton below:
+The approach used to convert a given NDFA is based on [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming). First we create a data structure to represent NDFA as shown for sample automaton below:
 
 ![Sample Automaton](https://github.com/DanielGunna/JFLAP-NDFA-Converter/blob/DanielGunna-patch-1/images/automata.png)
 
-X | Destiny states for a given symbol of alphabet
------------- | -------------
-State | Symbol 0 | Symbol 1
-State 0 | |
-State 1 | |
-State 2 | |
-State 3 | |
+
+| States/Symbols       	| Symbol 0  	| Symbol 1           	|
+|----------------------	|-----------	|--------------------	|
+| State 0 (**Inital**) 	| {State 0} 	| {State 0, State 1} 	|
+| State 1              	| {State 2} 	| {State 2}          	|
+| State 2              	| {State 3} 	| {State 3}          	|
+| State 3 (**Final**)  	| {       } 	| {       }          	|
+
+For each  NDFA automaton's state, we'll list all others states that can be reached  through computing of each symbol of alphabet by current state. 
 
 
 ## Usage ## 
