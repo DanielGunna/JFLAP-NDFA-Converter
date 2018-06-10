@@ -13,12 +13,24 @@ The approach used to convert a given NDFA is based on [dynamic programming](http
 
 | States/Symbols       	| Symbol 0  	| Symbol 1           	|
 |----------------------	|-----------	|--------------------	|
-| State 0 (**Inital**) 	| {State 0} 	| {State 0, State 1} 	|
+| State 0 (**Initial**)	| {State 0} 	| {State 0, State 1} 	|
 | State 1              	| {State 2} 	| {State 2}          	|
 | State 2              	| {State 3} 	| {State 3}          	|
 | State 3 (**Final**)  	| {       } 	| {       }          	|
 
 For each  NDFA automaton's state, we'll list all others states that can be reached  through computing of each symbol of alphabet by current state. 
+
+Next step is add  NDFA automaton's initial state to a new data structure similar as that we show above. This data structure will be used in conversion process to represent  DFA automaton resulted from conversion. Data structure after previous steps is showed below:
+
+
+| States/Symbols       	| Symbol 0  	| Symbol 1           	|
+|----------------------	|-----------	|--------------------	|
+| State 0 (**Initial**)	| { } 	| { }         	|
+|                     	| { } 	| { }          	|
+|                     	| { } 	| { }          	|
+|                       | { } 	| { }          	|
+
+
 
 
 ## Usage ## 
